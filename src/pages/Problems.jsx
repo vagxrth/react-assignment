@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Problems = () => {
 
@@ -7,9 +8,9 @@ const Problems = () => {
     difficulty: "Medium",
     acceptance: "42%"
   }, {
-    title: "201. Bitwise AND of Numbers Range",
-    difficulty: "Medium",
-    acceptance: "41.2%"
+    title: "1. Two Sum",
+    difficulty: "Easy",
+    acceptance: "53.1%"
   },
   {
     title: "202. Happy Number",
@@ -28,7 +29,7 @@ const Problems = () => {
     const difficulty = props.difficulty;
 
     const getDifficultyColor = (difficulty) => {
-      switch(difficulty) {
+      switch (difficulty) {
         case 'Hard':
           return 'red';
         case 'Medium':
@@ -43,18 +44,20 @@ const Problems = () => {
     const difficultyColor = getDifficultyColor(difficulty);
 
     return (
-      <div className='flex flex-col m-5'>
-        <tr>
-          <td className='pr-5'>
-            {title}
-          </td>
-          <td className='pr-5'>
-            {acceptance}
-          </td>
-          <td style={{color: difficultyColor}}>
-            {difficulty}
-          </td>
-        </tr>
+      <div className='flex flex-col m-5 cursor-pointer border-2 border-black rounded-lg hover:bg-slate-100'>
+        <Link to={`/problems/${encodeURIComponent(title)}`}>
+          <tr>
+            <td className='pr-5'>
+              {title}
+            </td>
+            <td className='pr-5'>
+              {acceptance}
+            </td>
+            <td style={{ color: difficultyColor }}>
+              {difficulty}
+            </td>
+          </tr>
+        </Link >
       </div>
     )
   }
